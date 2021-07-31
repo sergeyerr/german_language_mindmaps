@@ -24,28 +24,40 @@ ans = [int(x.strip()) for x in input().split(',')]
 selected_groups = [list(groups_dict.keys())[i] for i in ans]
 
 print('Выбранны группы', *selected_groups, sep='\n')
+print('-------------------------------------------')
+difficulty = int(input("Выбери сложность от 1 до 3:"))
+
 
 all_verbs = [x for y in [groups_dict[k] for k in selected_groups] for x in y]
 ans = ''
+correct_count = 0
+all_count = 0
 while ans != 'stop':
-    exclude_form = sample(list(range(2)), 1)[0]
+    exclude_forms = sample(list(range(3)), difficulty)
     chosen_verb = randrange(len(all_verbs))
     forms = all_verbs[chosen_verb][:3]
     translation = all_verbs[chosen_verb][3]
-    forms_to_print = [('Infinitiv: ', forms[0]), ('Präteritum: ', forms[1]), ('Partizip 2: ', forms[2])]
-    print('Translation: ', translation)
-    for i in range(3):
-        if i != exclude_form:
-            print(forms_to_print[i][0], forms_to_print[i][1])
-    print(forms_to_print[exclude_form][0], '?')
-    ans = input()
+    forms_to_print = [('Translation: ', translation),
+        ('Infinitiv: ', forms[0]), ('Präteritum: ', forms[1]), ('Partizip 2: ', forms[2])]
+    for i in range(4):
+        if i not in exclude_forms:
+            print(f'{forms_to_print[i][0]:15s}', forms_to_print[i][1])
+    for form in exclude_forms:
+        print(f'{forms_to_print[form][0]:15s}', '?')
+        ans = input()
+        if ans == 'stop!':
+            break
+        all_count += 1
+        ans = ans.strip().lower()
+        if ans != forms_to_print[form][1]:
+            print('WRONG!!!')
+            print('correct was: ', forms_to_print[form][1])
+        else:
+            correct_count += 1
+            print('correct, bro!')
     if ans == 'stop!':
         break
-    ans = ans.strip().lower()
-    if ans != forms_to_print[exclude_form][1]:
-        print('WRONG!!!')
-        print('correct was: ', forms_to_print[exclude_form][1])
-    else:
-        print('correct, bro!')
     print('-------------------------------------------')
-
+print('-------------------------------------------')
+print(f'|            your stats: {correct_count}/{all_count}              |')
+print('-------------------------------------------')
