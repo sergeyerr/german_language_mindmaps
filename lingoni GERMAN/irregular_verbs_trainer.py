@@ -18,7 +18,9 @@ for p in listdir(verb_folder):
                 groups_dict[splitext(p)[0]].append(tmp)
 print(groups_dict)
 
-print('Выберите группы(через запятую, индексация с 0):', *groups_dict.keys(), sep='\n')
+print('Выберите группы(можно через запятую):')
+for i, k in enumerate(groups_dict.keys()):
+    print(f'{i}:  {k}')
 ans = [int(x.strip()) for x in input().split(',')]
 
 selected_groups = [list(groups_dict.keys())[i] for i in ans]
