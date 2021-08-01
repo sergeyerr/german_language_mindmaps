@@ -1,7 +1,0 @@
-infinitiv,prateritum,particip_ii,translation
-bleiben,blieb,geblieben,stay
-entscheiden,entschied,entschieden,decide
-schreiben,schrieb,geschrieben,write
-steigen,stieg,gestiegen,rise
-treiben,trieb,getrieben,"to drive"
-
