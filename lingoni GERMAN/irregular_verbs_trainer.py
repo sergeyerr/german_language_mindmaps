@@ -35,7 +35,10 @@ ans = ''
 correct_count = 0
 all_count = 0
 while ans != 'stop':
-    exclude_forms = sample(list(range(4)), difficulty)
+    if difficulty != 3:
+        exclude_forms = sample(list(range(4)), difficulty)
+    else:
+        exclude_forms = [1,2,3]
     chosen_verb = randrange(len(all_verbs))
     forms = all_verbs[chosen_verb][:3]
     translation = all_verbs[chosen_verb][3]
