@@ -40,7 +40,7 @@ shuffle(all_verbs)
 ans = ''
 correct_count = 0
 all_count = 0
-chosen_verb = 0
+chosen_verb = -1
 errors_round = False
 while ans != 'stop!':
     if difficulty != 3:
@@ -49,16 +49,13 @@ while ans != 'stop!':
         exclude_forms = [1, 2, 3]
     # chosen_verb = randrange(len(all_verbs))
 
-    forms = all_verbs[chosen_verb][:3]
-    translation = all_verbs[chosen_verb][3]
     chosen_verb = chosen_verb + 1
     if chosen_verb == len(all_verbs):
         failed_verbs = set([k for k, v in success_map.items() if sum(v) > 0])
         if not errors_round and len(failed_verbs) > 0:
             print('errors round')
             all_verbs = [x for y in [groups_dict[k] for k in selected_groups] for x in y]
-            if len(failed_verbs) > 0:
-                all_verbs = [x for x in all_verbs if x[3] in failed_verbs]
+            all_verbs = [x for x in all_verbs if x[3] in failed_verbs]
         else:
             print('all verbs round')
             all_verbs = [x for y in [groups_dict[k] for k in selected_groups] for x in y]
@@ -68,6 +65,8 @@ while ans != 'stop!':
         errors_round = not errors_round
         chosen_verb = 0
     chosen_verb = chosen_verb % len(all_verbs)
+    forms = all_verbs[chosen_verb][:3]
+    translation = all_verbs[chosen_verb][3]
     forms_to_print = [('Translation: ', translation),
                       ('Infinitiv: ', forms[0]), ('Präteritum: ', forms[1]), ('Partizip 2: ', forms[2])]
     for i in range(4):
