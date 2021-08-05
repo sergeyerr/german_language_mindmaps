@@ -37,7 +37,7 @@ ans = ''
 correct_count = 0
 all_count = 0
 chosen_verb = 0
-while ans != 'stop':
+while ans != 'stop!':
     if difficulty != 3:
         exclude_forms = sample(list(range(4)), difficulty)
     else:
