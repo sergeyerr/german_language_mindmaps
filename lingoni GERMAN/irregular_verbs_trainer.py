@@ -19,7 +19,7 @@ for p in listdir(verb_folder):
             tmp = parse_str(l)
             if len(tmp) > 0:
                 groups_dict[splitext(p)[0]].append(tmp)
-print(groups_dict)
+#print(groups_dict)
 
 print('Выберите группы(можно через запятую):')
 for i, k in enumerate(groups_dict.keys()):
@@ -34,7 +34,7 @@ difficulty = int(input("Выбери сложность от 1 до 3:"))
 
 all_verbs = [x for y in [groups_dict[k] for k in selected_groups] for x in y]
 success_map = dict(zip([x[3] for x in all_verbs], [[] for i in range(len(all_verbs))]))
-
+print(len(all_verbs))
 shuffle(all_verbs)
 
 ans = ''
