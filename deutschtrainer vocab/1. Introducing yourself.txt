@@ -1,0 +1,14 @@
+der Name, Name(family name)
+der Vorname, given name
+der Nachname, surname
+Wie ist dein Name, what is your name
+Wie ist Ihr Name, what is Your name
+Main Name ist Sergei, my name is Sergei
+Wie heißen Sie?
+Wie heißt Du?
+Ich haiße Sergei?
+Wie ist dein Nachname?, What is your Surname?
+Mein Nachname is Neumann
+Wer sind Sie?, who are you?
+Wer bist du?
+Ich bin Sergei
